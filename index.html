@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HealMind AI</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4fbff;color:#222;scroll-behavior:smooth}
+header{background:linear-gradient(135deg,#5cc6c6,#7d7cff);color:#fff;padding:80px 20px;text-align:center}
+nav{position:sticky;top:0;background:#fff;padding:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+nav a{margin:0 12px;color:#333;text-decoration:none;font-weight:bold}
+section{padding:50px 20px;max-width:1100px;margin:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:#fff;padding:20px;border-radius:16px;box-shadow:0 5px 15px rgba(0,0,0,.08)}
+button{padding:10px 18px;border:none;border-radius:25px;background:#5cc6c6;color:#fff;cursor:pointer}
+#moodResult{margin-top:12px;font-weight:bold}
+.breath{width:120px;height:120px;background:#7d7cff;border-radius:50%;margin:20px auto;animation:breathe 6s infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
+footer{text-align:center;padding:25px;background:#222;color:#fff}
+.dark{background:#111;color:#eee}
+.dark nav,.dark .card{background:#222;color:#eee}
+</style>
+</head>
+<body>
+    <script>
+  window.wxOConfiguration = {
+    orchestrationID: "88998f2a09bc4e15a1554dbc2dbf253d_31c05061-ec6e-4f8b-8a11-0a9370b6a112",
+    hostURL: "https://au-syd.watson-orchestrate.cloud.ibm.com",
+    rootElementID: "root",
+    deploymentPlatform: "ibmcloud",
+    crn: "crn:v1:bluemix:public:watsonx-orchestrate:au-syd:a/88998f2a09bc4e15a1554dbc2dbf253d:31c05061-ec6e-4f8b-8a11-0a9370b6a112::",
+    chatOptions: {
+        agentId: "47b1de5f-6e3b-4e4b-abda-5a7f5373186a", 
+    }
+  };
+  setTimeout(function () {
+    const script = document.createElement('script');
+    script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
+    script.addEventListener('load', function () {
+        wxoLoader.init();
+    });
+    document.head.appendChild(script);
+  }, 0);                     
+</script>
+<nav>
+<a href="#about">About</a>
+<a href="#tips">Tips</a>
+<a href="#mood">Mood</a>
+<a href="#breathing">Breathing</a>
+<button onclick="toggleTheme()">🌙</button>
+</nav>
+
+<header>
+<h1>HealMind AI</h1>
+<p>Your AI Companion for Mental Health Awareness & Emotional Well-being</p>
+<a href="#about"><button>Explore</button></a>
+</header>
+
+<section id="about">
+<h2>About HealMind AI</h2>
+<p>HealMind AI promotes mental health awareness by providing educational information, self-care guidance, mood tracking, and wellness tips. It complements—but does not replace—professional mental healthcare.</p>
+</section>
+
+<section id="tips">
+<h2>Self-Care Tips</h2>
+<div class="cards">
+<div class="card"><h3>🧘 Mindfulness</h3><p>Practice deep breathing for 5 minutes daily.</p></div>
+<div class="card"><h3>😴 Sleep</h3><p>Aim for 7–9 hours of quality sleep.</p></div>
+<div class="card"><h3>🏃 Exercise</h3><p>Move your body for at least 30 minutes.</p></div>
+<div class="card"><h3>💬 Connect</h3><p>Talk with trusted friends and family regularly.</p></div>
+</div>
+</section>
+
+<section id="mood">
+<h2>Mood Checker</h2>
+<select id="moodSelect">
+<option>😊 Happy</option>
+<option>😐 Okay</option>
+<option>😟 Stressed</option>
+<option>😢 Sad</option>
+</select>
+<button onclick="checkMood()">Check</button>
+<p id="moodResult"></p>
+</section>
+
+<section id="breathing">
+<h2>Breathing Exercise</h2>
+<div class="breath"></div>
+<p>Inhale as the circle grows. Exhale as it shrinks.</p>
+</section>
+
+<section>
+<h2>Need Support?</h2>
+<p>If you're feeling overwhelmed, consider talking to someone you trust or reaching out to a qualified mental health professional.</p>
+</section>
+
+<footer>© 2026 HealMind AI</footer>
+
+<script>
+function checkMood(){
+let m=document.getElementById("moodSelect").value,r="";
+if(m.includes("Happy"))r="Great! Keep practicing healthy habits.";
+else if(m.includes("Okay"))r="Take a short break and stay hydrated.";
+else if(m.includes("Stressed"))r="Try deep breathing or a short walk.";
+else r="You deserve support. Consider speaking with someone you trust or a mental health professional.";
+document.getElementById("moodResult").innerText=r;
+}
+function toggleTheme(){document.body.classList.toggle("dark");}
+</script>
+</body>
+</html>
