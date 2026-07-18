@@ -1,2 +1,2 @@
-# My-first-chatbot
-AI-powered mental health awareness and wellness assistant built with IBM watsonx.ai, Granite Models, LangFlow, and Retrieval-Augmented Generation (RAG).
+# HealMind-AI
+Agentic AI-powered mental health awareness platform using IBM watsonx.ai, Granite Models, LangFlow, and RAG for personalized wellness guidance and mood tracking.
